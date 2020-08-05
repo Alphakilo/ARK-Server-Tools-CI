@@ -1,0 +1,8 @@
+test_server_tools_config:
+  stage: test
+  image: alphakilo/ark-server-tools-ci
+  script:
+    - rm -rf /etc/arkmanager/*
+    - cp -r server-tools/* /etc/arkmanager/
+    - chown -R steam:steam /etc/arkmanager/*
+    - /usr/local/bin/arkmanager printconfig @all
